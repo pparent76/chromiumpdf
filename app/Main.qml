@@ -98,8 +98,9 @@ MainView {
     
      function handleTransfer(transfer) {
        var item = transfer.items[0]
-                        loadPdf(item.url)
-                        mainPageStack.pop(importPage)
+        loadPdf(item.url)
+        if (importPage)
+          mainPageStack.pop(importPage)
     }   
   PageStack {
     id: mainPageStack
