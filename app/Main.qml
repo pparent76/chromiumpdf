@@ -46,8 +46,8 @@ MainView {
         {
         importPage = mainPageStack.push(Qt.resolvedUrl("ImportPage.qml"),{"contentType": ContentType.All, "handler": ContentHandler.Source})
         importPage.imported.connect(function(fileUrl) {
-              webview.url=fileUrl;
               mainPageStack.pop(importPage)
+              loadPdf(fileUrl);
           })
         }
     }
@@ -60,6 +60,20 @@ MainView {
         }
     }
 
+  function loadPdf(url) {
+    // Vérifie que l'URL se termine par .pdf (insensible à la casse)
+    if (url && url.toString().toLowerCase().endsWith(".pdf")) {
+        webview.url = url;
+    } else {
+       toast.show("Not a pdf file");
+       importPage = mainPageStack.push(Qt.resolvedUrl("ImportPage.qml"),{"contentType": ContentType.All, "handler": ContentHandler.Source})
+       importPage.imported.connect(function(fileUrl) {
+              mainPageStack.pop(importPage)
+              loadPdf(fileUrl);
+          })
+    }
+  }
+
     function handleIncoming(incoming) {
             var transfer = incoming.transfers[0] 
             handleTransfer(transfer)
@@ -68,7 +82,7 @@ MainView {
     
      function handleTransfer(transfer) {
        var item = transfer.items[0]
-                        webview.url= item.url
+                        loadPdf(item.url)
                         mainPageStack.pop(importPage)
     }   
   PageStack {
@@ -107,10 +121,13 @@ MainView {
         }
 
       } //End webview--------------------------------------------------------------------------------------------
+      
     }
     
 
   }
   
-    
+        Toast {
+      id: toast
+      }  
 }

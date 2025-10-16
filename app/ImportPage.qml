@@ -26,7 +26,7 @@ Page {
 
 	property var url
 	property var handler
-	property var contentType
+	property var contentType: ContentType.Documents
 
     signal cancel()
     signal imported(string fileUrl)
