@@ -1,0 +1,17 @@
+{
+    "name": "chromiumpdf.pparent",
+    "description": "WhatsApp client with Responsive Design.",
+    "architecture": "@CLICK_ARCH@",
+
+    "title": "chromiumpdf",
+    "hooks": {
+        "chromiumpdf": {
+            "apparmor": "chromiumpdf.apparmor",
+            "desktop":  "chromiumpdf.desktop",
+            "content-hub": "content-hub.json"
+        }
+    },
+    "version": "0.3.3",
+    "maintainer": "Adrian Campos <adriancampos@teachelp.com>",
+    "framework" : "ubuntu-sdk-20.04"
+}
