@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=chromiumpdf
+Name=Chromium PDF
 Comment=Pdf reader based on chromium
 Exec=qmlscene %u app/Main.qml --scaling --gles 
 Terminal=false

@@ -38,9 +38,9 @@ Page {
                 leadingActionBar.actions: [
                     Action {
                         iconName: "back"
-                        text: "Retour"
+                        text: "Back"
                         onTriggered: {
-                            cancel()
+                           Qt.quit()
                         }
                     }
                 ]
